@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<body>
+<button id='btn'>你点我啊</button>
+<div id="box"></div>
+
+    <script>
+            $('#btn').click(function(){
+
+               /* $.get('RequireSouce.php',{'user':'白荼'},function(data){      //$.post
+                 $('#box').html(data);
+                 });
+*/
+                $.ajax({
+                    'url':'RequireSouce.php',
+                    'success':function(data){
+                        alert(data+'弹弹弹，弹走鱼尾纹');
+                    },
+                    'type':'get',
+                    'data':{'user':'啊哈','age':"199"}
+                })
+            })
+  </script>
+</body>
+</html>
