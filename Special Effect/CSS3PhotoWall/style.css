@@ -1,0 +1,130 @@
+body{background:#eee}
+/*公共样式*/
+
+img{
+    height:300px;
+    text-align:center;
+    padding:10px 10px 15px;
+    background:#fff;border:1px solid #ddd;      /*给图片加上边框*/
+    position:absolute;
+    z-index:1;
+    /*transform:rotate(20deg)         !*设置旋转角度为20度*!*/
+}
+img:hover{
+    transform:rotate(0deg);             /*当鼠标移动到图片上时旋转角度变为0*/
+    transform:scale(1.2);              /*scale表示放大的倍数*/
+    transition:0.5s;          /*时间为2秒*/
+    box-shadow:10px 10px 15px #CCC;      /*增加图片阴影效果*/
+    z-index:2;
+}
+h1{text-align:center}
+.container{
+    width:960px;height:450px;margin:60px auto;
+    position:relative;
+}
+/*-----------------------------------------------------------------------------------------------------------------------*/
+/*其他样式*/
+.img1{
+    width:200px;
+    height:200px;
+    left:400px;
+    top:0;
+    transform:rotate(-5deg);
+}
+.img2{
+    width:200px;
+    height:200px;
+    top: 0;
+    left: 600px;
+    -webkit-transform: rotate(-20deg);
+    -moz-transform: rotate(-20deg);
+    transform: rotate(-20deg);
+}
+
+.img3
+{
+    width:200px;
+    height:200px;
+    bottom: 0;
+    right: 0;
+    -webkit-transform: rotate(5deg);
+    -moz-transform: rotate(5deg);
+    transform: rotate(5deg);
+}
+
+.img4
+{
+    width:200px;
+    height:200px;
+    bottom:0;
+    left:300px;
+    -webkit-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+}
+
+.img5
+{
+    width:200px;
+    height:200px;
+    bottom: 0;
+    left: 0;
+    -webkit-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+}
+
+.img6
+{
+    width:200px;
+    height:200px;
+    top: 0;
+    left:0;
+    -webkit-transform: rotate(10deg);
+    -moz-transform: rotate(10deg);
+    transform: rotate(10deg);
+}
+
+.img7
+{
+    width:200px;
+    height:200px;
+    top: 0;
+    left: 850px;
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    transform: rotate(20deg);
+}
+
+.img8
+{
+    width:200px;
+    height:200px;
+    bottom: -20px;
+    right: 630px;
+    -webkit-transform: rotate(5deg);
+    -moz-transform: rotate(5deg);
+    transform: rotate(5deg);
+}
+
+.img9
+{
+    width:200px;
+    height:200px;
+    top: 90px;
+    left: 550px;
+    -webkit-transform: rotate(15deg);
+    -moz-transform: rotate(15deg);
+    transform: rotate(15deg);
+}
+
+.img0
+{
+    width:200px;
+    height:200px;
+    left:180px;
+    top:20px;
+    -webkit-transform: rotate(-10deg);
+    -moz-transform: rotate(-10deg);
+    transform: rotate(-10deg);
+}

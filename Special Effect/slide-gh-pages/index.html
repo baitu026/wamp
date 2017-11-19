@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Slide</title>
+	<style>
+	#slide-container {
+		overflow: hidden;
+		position: relative;
+		margin: 20px auto;
+	}
+	#slide {
+		position: absolute;
+		z-index: 1;
+	}
+	#slide img {
+		float: left;
+		width: 1024px;
+	}
+	#slide-pagination {
+		position: absolute;
+		z-index: 2;
+		left: 50%;
+		transform: translateX(-50%);
+		bottom: 10px;
+	}
+	#slide-pagination span {
+		cursor: pointer;
+		float: left;
+		width: 10px;
+		height: 10px;
+		margin: 0 4px;
+		border: 1px solid #fff;
+		border-radius: 50%;
+		background: #333;
+	}
+	#slide-pagination .active {
+		background: #ccc;
+		cursor: default;
+	}
+	#slide-container > a{
+		cursor: pointer;
+		position: absolute;
+		z-index: 2;
+		top: 50%;
+		transform: translateY(-50%);
+		width: 60px;
+		font-size: 60px;
+		font-weight: bold;
+		color: #fff;
+		text-align: center;
+	}
+	#slide-container > a:first-of-type {
+		left: 20px;
+	}
+	#slide-container > a:last-of-type {
+		right: 20px;
+	}
+	#slide-container > a:hover {
+		background: rgba(0,0,0,0.3);
+	}
+	</style>
+</head>
+<body>
+	<div id="slide-container">
+		<div id="slide">
+			<img src="images/CrocusTL_FramePoolRM_688-580-676_768_HD_ZH-CN1557195672.jpg" alt="">
+			<img src="images/DyjandiFalls_ZH-CN11254212344_1920x1080.jpg" alt="">
+			<img src="images/GermanyHoli_ZH-CN11395323110_1920x1080.jpg" alt="">
+			<img src="images/RedSky_FoxRiverWisc_GettyImagesRF-499617760_768_HD_ZH-CN870809322.jpg" alt="">
+			<img src="images/VernalEquinoxOrchid_ZH-CN10226406786_1920x1080.jpg" alt="">
+		</div>
+		<div id="slide-pagination"></div>
+		<a id="slide-prev">&lt;</a>
+		<a id="slide-next">&gt;</a>
+	</div>
+	<script>
+
+	function slide() {
+
+		// 设置
+
+		var myWidth = 1024;                                    // 图片宽度
+		var myHeight = 576;                                    // 图片高度
+		var myInterval = 3000;                                 // 轮播时间 ms
+		var myButtons = 1;                                     // 有无按钮 1有 0无
+		var myNum;                                             // 图片数量 自动生成
+
+		// 辅助标识
+		var index = 1;
+		var animated = false;
+		var timer;
+		var i;
+
+		// 获取元素
+		
+		var container = document.getElementById("slide-container");
+		var slide = document.getElementById("slide");
+		var images = slide.getElementsByTagName("img");
+			myNum = images.length;
+		var pagination = document.getElementById("slide-pagination");
+		var spans;
+		var prev = document.getElementById("slide-prev");
+		var next = document.getElementById("slide-next");
+
+		// 初始化 开始...
+
+		slide.style.left = -myWidth + "px";                    // 设置第一张图片的定位
+		slide.style.width = myWidth * (myNum + 2) + "px";      // 设置图片容器总宽度为 图片宽度 * (图片数量 + 2)
+
+		container.style.width = myWidth + "px";                // 设置外层容器宽度为图片宽度
+		container.style.height = myHeight + "px";              // 设置外层容器高度为图片高度
+		
+		var first = document.createElement("img");
+		var last = document.createElement("img");
+		first.src = images[0].src;
+		last.src = images[myNum - 1].src;
+		slide.insertBefore(last, images[0]);                   // 在图片容器内部第一张图片前插入最后一张图片
+		slide.appendChild(first);                              // 在图片容器内部最后一张图片后插入第一张图片 保证无限滚动
+
+		for (i = 0; i < myNum; i++) {                          // 动态生成分页按钮
+			var span = document.createElement("span");
+			span.setAttribute("data-index", i+1)
+			pagination.appendChild(span);
+		}
+		spans = pagination.getElementsByTagName("span");
+		spans[0].className = "active";
+
+		// 初始化 完毕...
+
+		// 动画主程序
+		function animate(offset) {                             // 传入位移量
+
+			animated = true;
+
+			var time = 500;                                    // 动画总时 ms
+			var interval = 10;                                 // 间隔时间 ms
+
+			var speed = Math.round(offset / (time / interval));
+			var newLeft = parseInt(slide.style.left) + offset;
+
+			var run = setInterval(function () {
+				if ((speed > 0 && parseInt(slide.style.left) < newLeft) || (speed < 0 && parseInt(slide.style.left) > newLeft)) {
+					slide.style.left = parseInt(slide.style.left) + speed + "px";
+				}
+				else {
+					clearInterval(run);
+					slide.style.left = newLeft + "px";
+
+					// 无限滚动的实现：超出时回归
+					if (newLeft === 0) slide.style.left = -myWidth * myNum + "px";
+					if (newLeft === (-myWidth * (myNum + 1))) slide.style.left = -myWidth + "px";
+
+					animated = false;
+				}
+			}, interval) 
+		}
+
+		// 根据分页按钮标识切换分页按钮
+		function spansToggle() {
+			for (var i = 0; i < myNum; i++) {
+				if (spans[i].className === "active") {
+					spans[i].className = "";
+					break;
+				}
+			}
+			spans[index - 1].className = "active";
+		}
+
+		// 为分页按钮添加点击事件
+		for (i = 0; i < myNum; i++) {
+			spans[i].onclick = function () {
+				if(animated) return;
+				if(this.className === "active") return;
+				var myIndex = parseInt(this.getAttribute("data-index"));
+				animate(-myWidth * (myIndex - index));
+				index = myIndex;
+				spansToggle();
+			}
+		}
+
+		// 上一图
+		function toPrevious() {
+			if (animated) return;
+			if (index == 1) index = myNum;
+			else index--;
+			animate(myWidth);
+			spansToggle();
+		}
+
+		// 下一图
+		function toNext() {
+			if (animated) return;
+			if (index == myNum) index = 1;
+			else index++;
+			animate(-myWidth);
+			spansToggle();
+		}
+
+		if (myButtons) {
+			prev.onclick = toPrevious;
+			next.onclick = toNext;
+		} else {
+			prev.style.display = "none";
+			next.style.display = "none";
+		}
+		
+
+		function autoplay() {
+			timer = setInterval(function () {
+				toNext();
+			}, myInterval);
+		}
+		autoplay();
+
+		container.onmouseout = autoplay;
+		container.onmouseover = function () {
+			clearInterval(timer);
+		}
+
+		function mouse(e) {
+			e = e || window.event;
+			s = e.wheelDelta || e.detail;
+			if (s) {
+				if (s > 0) toPrevious();
+				if (s < 0) toNext();
+			}
+		}
+		if(document.addEventListner) {
+			document.addEventListner("DOMMouseScroll", mouse, false);
+		}
+		container.onmousewheel = mouse;
+		
+	}
+
+	window.onload = function () {
+		slide();
+	}
+
+	</script>
+</body>
+</html>
