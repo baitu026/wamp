@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    canvas {
+        display: block;
+    }
+</style>
+<canvas id="canvas">
+    当前浏览器不支持Canvas，请更换浏览器后再试
+</canvas>
+
+<script src="digit.js"></script>
+<script src="JS%20canvas.js"></script>
+<!--
+<script>
+    window.onload=function(){
+        var canvas=document.getElementById("canvas");
+        canvas.width = 724;
+        canvas.height = 768;
+        var context=canvas.getContext("2d");
+
+        context.moveTo(100,100);
+        context.lineTo(700,700);
+        context.lineTo(100,700);
+        context.lineTo(100,100);
+        context.lineWidth=5;            //线条粗细
+        context.strokeStyle="#005588";      //画笔颜色
+        context.fillStyle="rgb(2,100,30)";      //填充颜色
+        context.fill();         //执行颜色填充
+        context.stroke();       //执行画图
+    }
+window.onload=function(){
+    var canvas=document.getElementById("canvas");
+    canvas.width=600;
+    canvas.height=500;
+
+    var context=canvas.getContext("2d");
+
+    context.lineWidth=5;
+
+    context.strokeStyle="#005588";
+
+    context.arc(300,300,200,0,2*Math.PI);           //右边为0||2，下为0.5 左为1 上为1.5  1为半圆，0.5为四分之一圆
+//参数1，2 圆心坐标3 半径大小 4 开始弧度 5 结束弧度 6 默认false是顺时针 true是逆时针
+
+    context.stroke()
+    context.fillStyle="blue";
+    context.fill()
+}
+</script>
+-->
+</body>
+</html>
