@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script language="JavaScript">
+    var str="20以内的偶数有";
+    var i=1;
+    while(i<=20){
+        if(i%2!=0){     //不能被2整除
+            i++;            //数量+1后跳过
+            continue;
+        }
+        str=str+i+"<BR />";
+        i++;    //数值不断增加
+    }
+    document.write(str);
+</script>
+<body>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script language="javascript">
+    function check(books){
+        switch(books){
+            case "生活类":
+                alert("您最喜爱的图书类别是:"+books);
+                break;
+            case "电脑类":
+                alert("您最喜爱的图书类别是:"+books);
+                break;
+            case "科技类":
+                alert("您最喜爱的图书类别是:"+books);
+                break;
+            case "体育类":
+                alert("您最喜爱的图书类别是:"+books);
+                break;
+        }
+    }
+
+</script>
+<body>
+<form name="form1" method="post" action="">
+    <span class="style2">您最喜爱的图书类别：</span>
+    <input  name="book" type="radio" value="生活类" onClick="check(this.value);">
+    生活类
+    <input  name="book" type="radio"value="电脑类" onclick="check(this.value);">
+    电脑类
+    <input name="book" type="radio" value="科技类" onclick="check(this.value);">
+    科技类
+    <input  name="book" type="radio"value="体育类" onclick="check(this.value);">
+    体育类
+</form>
+</body>
+</html>

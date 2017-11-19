@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script language="JavaScript">
+    function check(){
+        var a=form1.user.value;
+        var b=form1.pwd.value;
+        if(a==""){
+            alert("用户名不能为空");
+            form1.user.focus();
+            return false;
+        }
+        else{
+            if(a.length<6){
+                alert("用户名长度不能小于6");
+            }
+        }
+        if(b==""){
+            alert("密码不能为空");
+            form1.pwd.focus();
+            return false;
+        }
+        else{
+            if(b.length<7){
+                alert("密码长度不能小于6");
+            }
+        }
+
+    }
+</script>
+<style type="text/css">
+    #box{
+        position:absolute;
+        right:29em;
+    }
+    #sex{
+        position:absolute;
+        right:35em;
+        bottom:26em;
+    }
+</style>
+<body>
+<form name="form1" method="post">
+    <table width="550" height="190" align="center" cellpadding="0" cellspacing="0"
+           bgcolor="#CCFF66" background="images/bg.jpg">
+        <tr><td height="70" colspan="2" align="center">&nbsp;</td></tr>
+        <tr>
+            <td width="290" align="center" id="box">
+                用户名:<input name="user" type="text" id="user" size="20"><br /><br />
+                密&nbsp;&nbsp;&nbsp;码:<input name="pwd" type="password" id="pwd" size="20">
+            </td>
+        </tr>
+        <tr>
+            <td height="43" align="center" id="sex">
+                <input name="submit" type="submit" vlaue="提交" onclick="return check()">&nbsp;
+                <input name="reset" type="reset" value="重置">
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

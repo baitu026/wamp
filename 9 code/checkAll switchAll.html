@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+    <title>应用JavaScript脚本控制文本域和复选框</title>
+
+    <style type="text/css">
+
+    </style>
+</head>
+
+<script language="javascript">
+    function checkAll(form1,status){    //参数必须是statusstatus 属性是一个可读可写的字符串，声明了要在窗口状态栏中显示的一条消息。
+        // 通常显示这条消息的时间是有限的，直到其他的消息将它覆盖，或者用户把鼠标移动到窗口的其他区域为止。
+        // 当擦除了 status 声明的消息时，状态栏要么恢复为它默认的空白状态，要么是再次显示出属性 defaultStatus 声明的默认消息
+        var all=form1.getElementsByTagName('input');    //获得Input标签
+
+        for(var i=0; all.length>i;i++){     //小于号必须反过来写，否则程序将错误
+            if(all[i].type='checkbox'){     //检测类型是否是复选框
+                if(all[i].checked==false){      //检测选择情况 如果没有选择，则选中
+                    all[i].checked=true;
+                }
+            }
+        }
+    }
+
+    function uncheckAll(form1,status){          //不选
+        var unall=form1.getElementsByTagName("input");
+        for(var i=0;unall.length>i;i++){
+            if(unall[i].type='checkbox'){
+                if(unall[i].checked==true){
+                    unall[i].checked=false;
+                }
+            }
+        }
+    }
+
+    function switchAll(form1,status){       //反选
+        var select=form1.getElementsByTagName("input");
+        for(var i=0;select.length>i;i++){
+            if(select[i].type='checkbox'){
+                if(select[i].checked==true){
+                    select[i].checked=false;
+                }
+                else if(select[i].checked==false){
+                    select[i].checked=true;
+                }
+            }
+        }
+    }
+</script>
+<body>
+<form name="form1" method="post" action="">
+    <table widht="550" bordercolor="#FFFFFF" bgcolor="#FBA720">
+        <tr>
+            <td width="450" height="35" colspan="5" bgcolor="#FFFFFF" align="center">订单管理</td>
+        </tr>
+        <tr>
+            <td width="80" align="right" bgcolor="#FFFFFF">说明:</td>
+            <td width="390"><textarea name="q" id="read" cols="50" rows="10"></textarea></td>
+            <td width="65" height="35" bgcolor="#FFFFFF">
+                <a href="#" onclick="javascript:document.getElementById('read').value='';">
+                    <img src="images/_14.jpg" width="60" height="25"/></a>
+<!--javascript:document.getElementById('read').value='' 就是把它的值赋为空 这样就实现了重写 给value赋别的值就显示别的值-->
+            </td>
+        </tr>
+        <tr>
+            <td rowspan="6" align="right" bgcolor="#FFFFFF">操作:</td>
+            <td height="30" colspan="2" align="left" bgcolor="#FFFFFF">
+                <input name="P" type="checkbox" id="PHP" value="PHP">C++编程词典全能版
+            </td>
+        </tr>
+        <tr>
+            <td height="30" colspan="4" align="left" bgcolor="#FFFFFF"><input name="PHP" type="checkbox" id="PHP2" value="PHP" />
+                VC编程词典钻石版</td>
+        </tr>
+        <tr>
+            <td height="30" colspan="4" align="left" bgcolor="#FFFFFF"><input name="PHP4" type="checkbox" id="PHP4" value="PHP" />
+                PHP编程词典体验版</td>
+        </tr>
+        <tr>
+            <td height="30" colspan="4" align="left" bgcolor="#FFFFFF"><input name="PHP5" type="checkbox" id="PHP5" value="PHP" />
+                C#编程词典标准版</td>
+        </tr>
+        <tr>
+            <td height="30" colspan="4" align="left" bgcolor="#FFFFFF"><input name="PHP6" type="checkbox" id="PHP6" value="PHP" />
+                VB编程词典全能版</td>
+        </tr>
+        <tr>
+            <td height="30" colspan="4" align="left" bgcolor="#FFFFFF"><input name="PHP7" type="checkbox" id="PHP7" value="PHP" />
+                ASP编程词典体验版</td>
+        </tr>
+
+        <tr>
+            <td colspan="5" align="center" bgcolor="#FFFFFF">
+                <img src="images/_01.jpg" onclick="checkAll(form1,status)" width="60" height="25" />
+                <img src="images/_08.jpg" onclick="switchAll(form1,status)" width="60" height="25"/>
+                <img src="images/_11.jpg" onclick="uncheckAll(form1,status)" width="60" height="25"/>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

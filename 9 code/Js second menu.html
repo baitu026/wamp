@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style type="text/css">
+    #submenu {
+        color: #FF0000;
+    }
+    #sue{
+        border: solid black 5px;
+        position: absolute;
+        right:10em;
+    }
+    #blue{
+        position: absolute;
+        padding-left: 0;
+    }
+</style>
+<body>
+<table width="1000" height="400" id="sue">
+    <tr>
+        <td width="80" align="center"><a href="#">首&nbsp;页</a></td>
+        <td widht="70" align="left"><a href="#" onmousemove="Lmenu('新品')">新品上架</a></td>
+        <div id="blue"><td width="70" align="left"><a href="#" onmousemove="Lmenu('购物车')">购物车</a></td>
+            <td width="70" align="center"><a href="#" onmousemove="Lmenu('会员')">会员中心</a></td>
+            <td widht="70" align="center"><a href="#" onclick="check_()">在线帮助</a></td></div>
+    </tr>
+    <tr>
+        <td width="226" height="20" align="right">&nbsp;</td>
+        <td width="535" align="right"> <div id="submenu">&nbsp;</div></td>
+        <script language="JavaScript">
+            function Lmenu(value){
+                switch(value){
+                    case "新品":
+                        submenu.innerHTML="<a href='#'>商品展示</a>|<a href='#'>销售排行榜</a>|<a href='#'>商品查询</a>";
+                        break;
+                    case "购物车":
+                        submenu.innerHTML="<a href='#'>添加商品</a>|<a href='#'>移出指定商品</a>|<a href='#'>清空购物车</a>|" +
+                                "<a href='#'>查询购物车</a>|<a href='#'>添加订单信息</a>";
+                        break;
+                    case "会员":
+                        submenu.innerHTML="<a href=#>注册会员</a>|<a href='#'>修改会员</a>|<a href='#'>账户查询</a>";
+                        break;
+                }
+            }
+
+            function check_(){
+                var a=prompt("输入1转到服务页面 输入2转接人工客服 输入3服务办理");
+                if(a=1){
+                    window.open("http://www.baidu.com","_blank","width=1000px","height=2000px");
+                }
+                else if(a=2){
+                    window.open("http://www.baidu.com","_blank","width=1000px","height=2000px");
+                }
+                else if(a=3){
+                    window.open("http://www.baidu.com","_blank","width=1000px","height=2000px");
+                }
+                else if(a=""){
+                    alert("请选择服务");
+                }
+            }
+        </script>
+    </tr>
+</table>
+</body>
+</html>
